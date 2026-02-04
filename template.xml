@@ -256,6 +256,7 @@ img{max-width:100%;height:auto}
 .single-content{padding:24px}
 .single-content p{margin-bottom:18px;font-size:16px;line-height:1.9;color:#333}
 .single-content h2,.single-content h3{margin:24px 0 16px;color:#111}
+.single-content img:first-of-type{display:none}
 .single-content img{border-radius:var(--radius);margin:20px 0}
 .single-content blockquote{border-left:4px solid var(--accent);padding:16px 20px;background:#f8f9fa;margin:20px 0;font-style:italic}
 .single-content ul,.single-content ol{margin:16px 0;padding-left:24px}
@@ -273,13 +274,21 @@ img{max-width:100%;height:auto}
 .share-btn.tg{background:#0088cc}
 .share-btn:hover{opacity:0.85}
 
-/* Related Posts */
+/* Related Posts - 5 posts grid */
 .related-posts{margin-top:20px}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.related-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px}
+.related-grid .grid-post{background:#f9f9f9}
+.related-grid .grid-post .post-thumb{height:120px}
+.related-grid .grid-post .post-info{padding:10px}
+.related-grid .grid-post .post-title{font-size:12px;-webkit-line-clamp:2}
 
-/* Comments */
-.comments-section{background:#fff;border-radius:var(--radius);padding:24px;margin-top:20px}
-.comments-title{font-size:18px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--accent)}
+/* Facebook Comments */
+.fb-comments-section{background:#fff;border-radius:var(--radius);padding:24px;margin-top:20px}
+.fb-comments-title{font-size:18px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--accent)}
+.fb-comments{width:100%}
+
+/* Comments (legacy - hidden) */
+.comments-section{display:none}
 
 /* Blog posts - list view */
 .blog-posts .post-outer{padding:16px 0;border-bottom:1px solid #eee}
@@ -965,17 +974,21 @@ function trendingPosts(containerId, count) {
 <b:if cond='data:post.labels'>
 <b:loop values='data:post.labels' var='label'>
 <b:if cond='data:label.isFirst'>
-<script>recentPosts('related-posts', 3);</script>
+<script>labelFeed('related-posts', '<data:label.name/>', 5);</script>
 </b:if>
 </b:loop>
 </b:if>
 </div>
 </div>
 
-<!-- Comments -->
-<div class='comments-section'>
-<h3 class='comments-title'><i class='far fa-comments'></i> Komentar</h3>
-<b:include data='post' name='comments'/>
+<!-- Facebook Comments -->
+<div class='fb-comments-section'>
+<h3 class='fb-comments-title'><i class='fab fa-facebook'></i> Komentar Facebook</h3>
+<div id='fb-root'></div>
+<script async='async' crossorigin='anonymous' defer='defer' nonce='randomNonce' src='https://connect.facebook.net/id_ID/sdk.js#xfbml=1&amp;version=v18.0'></script>
+<div class='fb-comments' data-colorscheme='light' data-href='' data-numposts='10' data-order-by='reverse_time' data-width='100%'>
+<script>document.querySelector('.fb-comments').setAttribute('data-href', window.location.href);</script>
+</div>
 </div>
 
 <b:elseif cond='data:view.isPage'/>
@@ -1085,7 +1098,9 @@ function trendingPosts(containerId, count) {
 <!-- ========== SIDEBAR ========== -->
 <aside class='sidebar'>
 
-<b:section id='sidebar' showaddelement='yes'>
+<!-- Sidebar untuk Homepage / Archive / Search -->
+<b:if cond='data:view.isHomepage or data:view.isArchive or data:view.search'>
+<b:section id='sidebar-home' showaddelement='yes'>
 
 <!-- Popular Posts Widget -->
 <b:widget id='PopularPosts1' locked='false' title='Berita Populer' type='PopularPosts' version='1'>
@@ -1164,29 +1179,6 @@ function trendingPosts(containerId, count) {
 </b:includable>
 </b:widget>
 
-<!-- Tag Cloud Widget -->
-<b:widget id='Label2' locked='false' title='Tags' type='Label' version='1'>
-<b:widget-settings>
-<b:widget-setting name='sorting'>ALPHA</b:widget-setting>
-<b:widget-setting name='display'>CLOUD</b:widget-setting>
-<b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
-</b:widget-settings>
-<b:includable id='main'>
-<div class='widget'>
-<div class='widget-header'>
-<div class='widget-title'><i class='fas fa-tags'></i> <data:title/></div>
-</div>
-<div class='widget-content'>
-<div class='tag-cloud'>
-<b:loop values='data:labels' var='label'>
-<a expr:href='data:label.url'><data:label.name/></a>
-</b:loop>
-</div>
-</div>
-</div>
-</b:includable>
-</b:widget>
-
 <!-- Archive Widget -->
 <b:widget id='BlogArchive1' locked='false' title='Arsip' type='BlogArchive' version='1'>
 <b:includable id='main'>
@@ -1214,6 +1206,95 @@ function trendingPosts(containerId, count) {
 </b:widget>
 
 </b:section>
+</b:if>
+
+<!-- Sidebar untuk Single Post / Static Page -->
+<b:if cond='data:view.isPost or data:view.isPage'>
+<b:section id='sidebar-post' showaddelement='yes'>
+
+<!-- Popular Posts Widget untuk Single Post -->
+<b:widget id='PopularPosts2' locked='false' title='Artikel Populer' type='PopularPosts' version='1'>
+<b:widget-settings>
+<b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+<b:widget-setting name='showThumbnails'>true</b:widget-setting>
+<b:widget-setting name='showSnippets'>false</b:widget-setting>
+</b:widget-settings>
+<b:includable id='main'>
+<div class='widget'>
+<div class='widget-header'>
+<div class='widget-title'><i class='fas fa-fire'></i> <data:title/></div>
+</div>
+<div class='widget-content'>
+<b:loop values='data:posts' var='post'>
+<div class='post-item'>
+<b:if cond='data:post.featuredImage or data:post.thumbnail'>
+<div class='post-thumb'>
+<a expr:href='data:post.href'>
+<b:if cond='data:post.featuredImage'>
+<img expr:alt='data:post.title' expr:src='data:post.featuredImage'/>
+<b:else/>
+<img expr:alt='data:post.title' expr:src='data:post.thumbnail'/>
+</b:if>
+</a>
+</div>
+</b:if>
+<div class='post-info'>
+<div class='post-title'><a expr:href='data:post.href'><data:post.title/></a></div>
+</div>
+</div>
+</b:loop>
+</div>
+</div>
+</b:includable>
+</b:widget>
+
+<!-- Trending Widget untuk Single Post -->
+<b:widget id='HTML11' locked='false' title='Sedang Trending' type='HTML' version='1'>
+<b:includable id='main'>
+<div class='widget'>
+<div class='widget-header'>
+<div class='widget-title'><i class='fas fa-chart-line'></i> <data:title/></div>
+</div>
+<div class='widget-content' id='trending-posts-single'/>
+<script>trendingPosts('trending-posts-single', 5);</script>
+</div>
+</b:includable>
+</b:widget>
+
+<!-- Tag Cloud Widget -->
+<b:widget id='Label2' locked='false' title='Tags' type='Label' version='1'>
+<b:widget-settings>
+<b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+<b:widget-setting name='display'>CLOUD</b:widget-setting>
+<b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
+</b:widget-settings>
+<b:includable id='main'>
+<div class='widget'>
+<div class='widget-header'>
+<div class='widget-title'><i class='fas fa-tags'></i> <data:title/></div>
+</div>
+<div class='widget-content'>
+<div class='tag-cloud'>
+<b:loop values='data:labels' var='label'>
+<a expr:href='data:label.url'><data:label.name/></a>
+</b:loop>
+</div>
+</div>
+</div>
+</b:includable>
+</b:widget>
+
+<!-- Iklan Sidebar -->
+<b:widget id='HTML12' locked='false' title='' type='HTML' version='1'>
+<b:includable id='main'>
+<div class='widget ad-widget'>
+<data:content/>
+</div>
+</b:includable>
+</b:widget>
+
+</b:section>
+</b:if>
 
 </aside>
 

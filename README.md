@@ -250,20 +250,56 @@ Tidak perlu konfigurasi manual.
 
 ---
 
-### 12. Sidebar - Popular Posts
+### 12. Sidebar Homepage
 
-**Lokasi:** Tata Letak → sidebar (PopularPosts1)
+**Lokasi:** Tata Letak → sidebar-home
 
-- Widget ini otomatis menampilkan postingan populer
-- Bisa diatur jumlah post yang tampil
+Sidebar ini **hanya muncul di halaman utama, arsip, dan pencarian**.
+
+**Widget default:**
+- PopularPosts1 - Berita Populer
+- HTML10 - Trending Posts
+- Label1 - Kategori (List)
+- BlogArchive1 - Arsip
+
+Anda bisa menambah/hapus widget sesuai kebutuhan.
 
 ---
 
-### 13. Sidebar - Arsip Blog
+### 13. Sidebar Single Post
 
-**Lokasi:** Tata Letak → sidebar (BlogArchive1)
+**Lokasi:** Tata Letak → sidebar-post
 
-- Widget ini otomatis menampilkan arsip berdasarkan bulan/tahun
+Sidebar ini **hanya muncul di halaman artikel (single post) dan static page**.
+
+**Widget default:**
+- PopularPosts2 - Artikel Populer
+- HTML11 - Sedang Trending
+- Label2 - Tags (Cloud)
+- HTML12 - Slot Iklan Sidebar
+
+Anda bisa menambah/hapus widget sesuai kebutuhan. Cocok untuk memasang iklan kontekstual yang hanya muncul di halaman artikel.
+
+---
+
+### 14. Related Posts (Berita Terkait)
+
+Di halaman single post, secara otomatis menampilkan **5 artikel terkait** berdasarkan label pertama dari post tersebut.
+
+Artikel ditampilkan dalam layout **grid 5 kolom** (responsive: 2 kolom di tablet, 1 kolom di mobile).
+
+---
+
+### 15. Komentar Facebook
+
+Template ini menggunakan **Facebook Comments** sebagai sistem komentar.
+
+**Keuntungan:**
+- Pengguna bisa komentar menggunakan akun Facebook
+- Mengurangi spam
+- Integrasi sosial lebih baik
+
+**Catatan:** Komentar akan muncul otomatis di halaman artikel.
 
 ---
 
