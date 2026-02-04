@@ -77,7 +77,10 @@ img{max-width:100%;height:auto}
 .top-bar{background:#111;color:#fff;padding:8px 0;font-size:12px}
 .top-bar-inner{display:flex;justify-content:space-between;align-items:center}
 .top-bar .date{color:#aaa}
-.top-bar .social-links a{color:#fff;margin-left:12px;font-size:14px}
+.top-bar .social-links{display:flex;align-items:center}
+.top-bar .social-links #topbar-social{display:contents}
+.top-bar .social-links .widget{display:contents}
+.top-bar .social-links a{color:#fff;margin-left:12px;font-size:14px;text-decoration:none}
 .top-bar .social-links a:hover{color:var(--accent2)}
 
 /* Header */
@@ -332,28 +335,73 @@ img{max-width:100%;height:auto}
 /* Responsive */
 @media(max-width:992px){
   .main-layout{grid-template-columns:1fr}
-  .sidebar{order:-1}
+  .content-area{order:1}
+  .sidebar{order:2}
   .footer-top{grid-template-columns:1fr 1fr}
   .category-row{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  .posts-grid,.related-grid{grid-template-columns:1fr 1fr}
-  .featured-grid{grid-template-columns:1fr}
-  .hero-slider{height:300px}
-  .slide-title{font-size:18px}
-  .hentry{flex-direction:column}
-  .hentry .post-thumbnail{width:100%;height:220px}
-  .single-title{font-size:22px}
-  .footer-top{grid-template-columns:1fr}
+  .top-bar{display:none}
+  .header-inner{flex-direction:column;gap:12px;text-align:center}
+  .logo{order:1}
+  .search-form{order:2;width:100%;max-width:100%}
+  .search-form input{flex:1}
+  .nav-menu{flex-wrap:wrap;justify-content:center}
   .nav-menu a{padding:10px 12px;font-size:12px}
+  .breaking-inner{flex-direction:column}
+  .breaking-label{justify-content:center;padding:10px}
+  .ticker-wrap{padding:10px}
+  .hero-slider{height:250px}
+  .slide-title{font-size:16px}
+  .slide-meta{font-size:11px}
+  .slider-nav button{width:36px;height:36px}
+  .featured-grid{grid-template-columns:1fr 1fr}
+  .posts-grid,.related-grid{grid-template-columns:1fr 1fr}
+  .cat-grid{grid-template-columns:1fr 1fr}
+  .cat-list-item{flex-direction:column}
+  .cat-list-thumb{width:100%;height:180px}
+  .hentry{flex-direction:column}
+  .hentry .post-thumbnail{width:100%;height:200px}
+  .single-post-wrap{padding:16px}
+  .single-title{font-size:20px}
+  .single-meta{flex-wrap:wrap;gap:8px}
+  .post-body{font-size:15px}
+  .footer-top{grid-template-columns:1fr}
+  .footer-col{margin-bottom:20px}
+  .widget{margin-bottom:16px}
+  .widget-title{font-size:16px;padding:12px 16px}
+  .post-item{padding:12px}
+  .post-thumb{width:80px;height:60px}
+  .post-title{font-size:13px}
 }
 @media(max-width:480px){
+  .site-header{padding:12px 0}
+  .logo{font-size:22px}
+  .logo img{max-height:40px}
+  .search-form input{padding:8px 12px;font-size:12px}
+  .search-form button{padding:8px 14px}
+  .hero-slider{height:200px}
+  .slide-title{font-size:14px;-webkit-line-clamp:2}
+  .slide-cat{font-size:9px;padding:3px 8px}
+  .slide-meta{display:none}
+  .featured-grid{grid-template-columns:1fr}
+  .featured-item{height:180px}
   .posts-grid,.related-grid{grid-template-columns:1fr}
-  .header-inner{flex-direction:column;text-align:center}
-  .search-form{width:100%}
-  .search-form input{flex:1}
-  .breaking-label{padding:10px 12px;font-size:11px}
-  .single-meta{flex-direction:column;gap:8px}
+  .cat-grid{grid-template-columns:1fr}
+  .cat-grid-thumb{height:140px}
+  .cat-grid-title{font-size:13px;padding:10px}
+  .cat-label{font-size:9px;margin:0 10px 10px}
+  .card-title{font-size:14px;padding:12px 14px}
+  .see-all{font-size:10px}
+  .single-title{font-size:18px}
+  .single-meta{font-size:11px;flex-direction:column;align-items:flex-start}
+  .post-body{font-size:14px}
+  .post-body img{margin:12px 0}
+  .related-title{font-size:18px}
+  .blog-pager{flex-direction:column;gap:8px}
+  .blog-pager a{padding:10px 16px;font-size:12px}
+  .footer-social a{width:32px;height:32px}
+  .footer-bottom{font-size:11px}
 }
 ]]></b:skin>
 
@@ -684,20 +732,7 @@ function trendingPosts(containerId, count) {
 </head>
 <body>
 
-<!-- Iklan Atas Header -->
-<b:section id='ad-top' maxwidgets='1' showaddelement='yes'>
-<b:widget id='HTML99' locked='false' title='Iklan Atas' type='HTML' version='1'>
-<b:includable id='main'>
-<b:if cond='data:content != &apos;&apos;'>
-<div class='ad-top-container'>
-<data:content/>
-</div>
-</b:if>
-</b:includable>
-</b:widget>
-</b:section>
-
-<!-- Top Bar -->
+<!-- Top Bar (hidden on mobile) -->
 <div class='top-bar'>
 <div class='container'>
 <div class='top-bar-inner'>
@@ -796,6 +831,20 @@ function trendingPosts(containerId, count) {
 <!-- Hero Slider -->
 <div class='hero-slider' id='main-slider'/>
 <script>loadSlider('main-slider', '', 5);</script>
+
+<!-- Iklan Setelah Slider -->
+<b:section id='ad-after-slider' maxwidgets='1' showaddelement='yes'>
+<b:widget id='HTML99' locked='false' title='Iklan' type='HTML' version='1'>
+<b:includable id='main'>
+<b:if cond='data:content != &apos;&apos;'>
+<div class='ad-widget'>
+<b:if cond='data:title != &apos;&apos;'><div class='ad-title'><data:title/></div></b:if>
+<div class='ad-content'><data:content/></div>
+</div>
+</b:if>
+</b:includable>
+</b:widget>
+</b:section>
 
 <!-- Featured Posts Grid -->
 <div class='featured-grid' id='featured-posts'/>
