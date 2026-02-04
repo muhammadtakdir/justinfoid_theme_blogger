@@ -52,7 +52,40 @@
 <!-- Variable definitions -->
 <Variable name="keycolor" description="Main Color" type="color" default="#0d47a1" value="#0d47a1"/>
 */
+/* ============================================
+   KONFIGURASI FONT - MUDAH DIUBAH
+   ============================================
+   Untuk mengubah font, ganti nilai --font-primary
+   
+   Contoh font alternatif:
+   - 'Myriad Pro', 'Source Sans Pro', sans-serif
+   - 'Roboto', sans-serif
+   - 'Open Sans', sans-serif
+   - 'Lato', sans-serif
+   - 'Poppins', sans-serif
+   - 'Inter', sans-serif
+   - 'Nunito', sans-serif
+   
+   Jika menggunakan Google Fonts, tambahkan import di bawah
+   ============================================ */
+
+/* Google Fonts Import - Uncomment yang diinginkan */
+/* @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); */
+
 :root{
+  /* Font Configuration */
+  --font-primary:'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --font-heading:var(--font-primary);
+  --font-size-base:14px;
+  --font-size-small:12px;
+  --font-size-large:16px;
+  --line-height:1.6;
+  
+  /* Color Configuration */
   --primary:#1a237e;
   --accent:#0d47a1;
   --accent2:#e63946;
@@ -60,6 +93,8 @@
   --card:#ffffff;
   --text:#222;
   --muted:#6b7280;
+  
+  /* Layout Configuration */
   --max-width:1200px;
   --gap:16px;
   --radius:8px;
@@ -67,7 +102,8 @@
   --header-bg:linear-gradient(135deg,#1a237e 0%,#0d47a1 100%);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+body{font-family:var(--font-primary);background:var(--bg);color:var(--text);font-size:var(--font-size-base);line-height:var(--line-height)}
+h1,h2,h3,h4,h5,h6,.card-title,.widget-title,.post-title,.single-title{font-family:var(--font-heading)}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 img{max-width:100%;height:auto}
@@ -1295,6 +1331,29 @@ function trendingPosts(containerId, count) {
 
 </b:section>
 </b:if>
+
+<!-- Sidebar Global - Muncul di Homepage DAN Single Post -->
+<b:section id='sidebar-global' showaddelement='yes'>
+
+<!-- Widget Global - Tambahkan widget apapun di sini -->
+<b:widget id='HTML13' locked='false' title='Iklan Sidebar' type='HTML' version='1'>
+<b:includable id='main'>
+<b:if cond='data:content != &quot;&quot;'>
+<div class='widget ad-widget'>
+<b:if cond='data:title != &quot;&quot;'>
+<div class='widget-header'>
+<div class='widget-title'><data:title/></div>
+</div>
+</b:if>
+<div class='widget-content'>
+<data:content/>
+</div>
+</div>
+</b:if>
+</b:includable>
+</b:widget>
+
+</b:section>
 
 </aside>
 

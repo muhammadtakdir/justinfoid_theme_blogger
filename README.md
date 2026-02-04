@@ -282,7 +282,23 @@ Anda bisa menambah/hapus widget sesuai kebutuhan. Cocok untuk memasang iklan kon
 
 ---
 
-### 14. Related Posts (Berita Terkait)
+### 14. Sidebar Global (Muncul di Semua Halaman)
+
+**Lokasi:** Tata Letak → sidebar-global
+
+Sidebar ini **muncul di SEMUA halaman** (homepage, single post, static page, arsip, dll).
+
+**Widget default:**
+- HTML13 - Slot Iklan Global
+
+Cocok untuk:
+- Iklan yang ingin ditampilkan di semua halaman
+- Widget subscribe/newsletter
+- Banner promosi
+
+---
+
+### 15. Related Posts (Berita Terkait)
 
 Di halaman single post, secara otomatis menampilkan **5 artikel terkait** berdasarkan label pertama dari post tersebut.
 
@@ -290,7 +306,7 @@ Artikel ditampilkan dalam layout **grid 5 kolom** (responsive: 2 kolom di tablet
 
 ---
 
-### 15. Komentar Facebook
+### 16. Komentar Facebook
 
 Template ini menggunakan **Facebook Comments** sebagai sistem komentar.
 
@@ -300,6 +316,69 @@ Template ini menggunakan **Facebook Comments** sebagai sistem komentar.
 - Integrasi sosial lebih baik
 
 **Catatan:** Komentar akan muncul otomatis di halaman artikel.
+
+---
+
+## 🔤 Kustomisasi Font
+
+Template ini mendukung pengaturan font yang mudah melalui CSS Variables.
+
+### Cara Mengubah Font:
+
+1. Buka template dan cari bagian `/* KONFIGURASI FONT */`
+2. Ubah nilai `--font-primary` sesuai keinginan
+
+### Contoh Konfigurasi Font:
+
+```css
+:root{
+  /* Font Default (Segoe UI) */
+  --font-primary:'Segoe UI', system-ui, -apple-system, sans-serif;
+  
+  /* Atau gunakan font lain: */
+  
+  /* Myriad Pro / Source Sans Pro (mirip Myriad Pro) */
+  --font-primary:'Source Sans Pro', 'Myriad Pro', sans-serif;
+  
+  /* Roboto */
+  --font-primary:'Roboto', sans-serif;
+  
+  /* Open Sans */
+  --font-primary:'Open Sans', sans-serif;
+  
+  /* Poppins */
+  --font-primary:'Poppins', sans-serif;
+  
+  /* Inter */
+  --font-primary:'Inter', sans-serif;
+}
+```
+
+### Menggunakan Google Fonts:
+
+1. Uncomment (hapus `/*` dan `*/`) baris import font yang diinginkan di bagian atas CSS
+2. Ubah `--font-primary` ke nama font tersebut
+
+**Contoh untuk Source Sans Pro (mirip Myriad Pro):**
+```css
+/* Hapus comment ini: */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+:root{
+  --font-primary:'Source Sans Pro', sans-serif;
+}
+```
+
+### Variabel Font Lainnya:
+
+| Variable | Fungsi | Default |
+|----------|--------|---------|
+| `--font-primary` | Font utama seluruh website | Segoe UI |
+| `--font-heading` | Font untuk heading/judul | Sama dengan primary |
+| `--font-size-base` | Ukuran font dasar | 14px |
+| `--font-size-small` | Ukuran font kecil | 12px |
+| `--font-size-large` | Ukuran font besar | 16px |
+| `--line-height` | Jarak antar baris | 1.6 |
 
 ---
 
