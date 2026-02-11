@@ -54,6 +54,14 @@ Parameter:
 - `''` - Label filter (kosong = semua post, atau isi nama label)
 - `10` - Jumlah post yang ditampilkan
 
+**Mengatur Kecepatan Ticker:**
+
+Untuk mempercepat atau memperlambat jalannya tulisan, cari kode CSS berikut di dalam template:
+```css
+.ticker{display:flex;animation:ticker 30s linear infinite;white-space:nowrap}
+```
+Ubah nilai `30s` (30 detik) menjadi lebih kecil untuk mempercepat (misal: `15s`) atau lebih besar untuk memperlambat (misal: `45s`).
+
 **Contoh penggunaan:**
 ```javascript
 // Menampilkan 10 post terbaru dari semua label
