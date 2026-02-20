@@ -6,6 +6,7 @@ Template Blogger modern untuk portal berita dengan desain responsif dan mudah di
 
 - ✅ Breaking News Ticker (Berita Terkini Berjalan)
 - ✅ Hero Slider (Slideshow Berita Utama)
+- ✅ Iklan Global Responsif (Muncul di semua halaman)
 - ✅ Featured Grid (Grid Berita Pilihan)
 - ✅ Kategori dengan Layout Mixed (3 Grid + 2 List)
 - ✅ Sidebar dengan Popular Posts & Archive
@@ -21,7 +22,7 @@ Template Blogger modern untuk portal berita dengan desain responsif dan mudah di
 2. Pilih blog Anda
 3. Pergi ke **Tema** → **Sesuaikan** → **Edit HTML**
 4. Hapus semua kode yang ada
-5. Salin seluruh isi file `template.xml`
+5. Salin seluruh isi file `template_200226.xml`
 6. Tempel di editor HTML Blogger
 7. Klik **Simpan**
 
@@ -38,7 +39,24 @@ Template Blogger modern untuk portal berita dengan desain responsif dan mudah di
 
 ---
 
-### 2. Breaking News Ticker
+### 2. Iklan Global Atas (Responsive)
+
+**Lokasi:** Tata Letak → ad-before-slider (HTML99)
+
+Iklan ini bersifat global dan muncul di posisi paling atas konten pada semua halaman (Homepage, Single Post, Static Page).
+
+1. Klik **Edit** pada widget "Iklan Global Atas"
+2. Tempel kode iklan AdSense atau banner Anda
+3. Simpan
+
+**Fitur:**
+- Otomatis menyesuaikan ukuran layar (Responsive)
+- Mengisi ruang kosong secara maksimal
+- Mendukung script AdSense (ins/iframe) maupun banner gambar biasa.
+
+---
+
+### 3. Breaking News Ticker
 
 Breaking News Ticker otomatis menampilkan postingan terbaru dari blog.
 

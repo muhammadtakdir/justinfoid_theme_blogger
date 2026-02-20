@@ -1,0 +1,55 @@
+# JInfo Template Tracking & Protection Trace
+
+## 1. Objective
+To implement a tracking mechanism in the Blogger XML template that identifies the domain where the template is installed and sends this information to the owner (via Telegram), while ensuring the template becomes non-functional if the tracking/license parts are removed.
+
+## 2. Implementation Strategy
+
+### A. Default Hidden State (CSS)
+The template body is hidden by default using:
+```css
+body { opacity: 0; visibility: hidden; transition: opacity 0.3s; }
+body.is-authorized { opacity: 1; visibility: visible; }
+```
+If JavaScript is disabled or the authorization script is removed, the site remains invisible.
+
+### B. License Identifier
+A new variable is added to the `<b:skin>` section to allow users to input their License ID through the Blogger Customizer:
+```xml
+<Variable name="jinfo.id" description="License ID" type="string" default="FREE" value="FREE"/>
+```
+
+### C. Authorization & Tracking Script
+A script is placed before `</body>` that:
+1.  Reads the `jinfo.id`.
+2.  Captures the current `window.location.hostname`.
+3.  Verifies the presence of the license element.
+4.  Sends a notification to Telegram (or a Proxy API).
+5.  Adds the `is-authorized` class to the `body` to reveal the content.
+6.  Runs a heartbeat check (setInterval) to ensure the license element hasn't been deleted after page load.
+
+## 3. Security Concerns (Token Exposure)
+Injected Token/ChatID in client-side JS is vulnerable to:
+- Token theft (misuse by others to send spam via the bot).
+- ChatID exposure.
+- Easy removal/bypass.
+
+## 4. Advanced Security Recommendations
+
+### A. Proxy/Bridge Approach (Highly Recommended)
+Instead of calling Telegram API directly from the browser:
+1.  **Template** calls a **Cloudflare Worker** or **PHP Script** on your server.
+2.  The **Server/Worker** holds the Telegram Token securely.
+3.  The **Server/Worker** forwards the data to Telegram.
+4.  *Benefit:* No secrets are exposed in the XML file.
+
+### B. Obfuscation
+Before distributing the template, the JavaScript should be obfuscated using tools like `javascript-obfuscator.com` to make the logic unreadable to humans.
+
+### C. Data Persistence (Google Sheets)
+For a better "Dashboard" experience, use Google Apps Script to log every installation into a Google Sheet instead of just receiving Telegram messages.
+
+---
+Date: Wednesday, 11 February 2026
+Project: justinfoid_blogger_themes
+File: template_11022026.xml
