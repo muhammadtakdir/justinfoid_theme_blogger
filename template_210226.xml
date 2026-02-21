@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html b:css='false' b:responsive='true' b:version='2' class='v2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 
@@ -8,9 +7,9 @@
 <b:includable id='main'>
 <b:if cond='data:content contains &quot;&lt;&quot;'>
 <!-- Jika konten mengandung HTML (iklan/script) -->
-<div class='ad-widget'>
-<b:if cond='data:title != &quot;&quot;'><div class='ad-title'><data:title/></div></b:if>
-<div class='ad-content'><data:content/></div>
+<div class='advert-box'>
+<b:if cond='data:title != &quot;&quot;'><div class='advert-label'><data:title/></div></b:if>
+<div class='advert-inner'><data:content/></div>
 </div>
 <b:else/>
 <!-- Jika konten hanya teks (nama label) -->
@@ -27,10 +26,9 @@
 </b:defaultmarkups>
 
 <head>
-<meta charset='utf-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
-<meta b:if='data:blog.pageType == &quot;error_page&quot;' content='noindex, nofollow' name='robots'/>
 <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+<meta charset='utf-8'/>
 <meta content='on' http-equiv='x-dns-prefetch-control'/>
 <meta content='strict-origin-when-cross-origin' name='referrer'/>
 <title><data:blog.pageTitle/></title>
@@ -45,13 +43,12 @@
 <link href='//www.blogger.com' rel='dns-prefetch'/>
 
 <!-- Font Awesome with SRI -->
-<link crossorigin='anonymous' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' referrerpolicy='no-referrer' rel='stylesheet'/>
+<link crossorigin='anonymous' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' referrerpolicy='no-referrer' rel='stylesheet'/>
 
 <b:skin><![CDATA[
 /*
 <!-- Variable definitions -->
 <Variable name="keycolor" description="Main Color" type="color" default="#0d47a1" value="#0d47a1"/>
-<Variable name="jinfo.id" description="License ID" type="string" default="FREE" value="FREE"/>
 */
 :root{
   --primary:#1a237e;
@@ -68,11 +65,10 @@
   --header-bg:linear-gradient(135deg,#ffa500 0%,#b3ecff 100%);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;opacity:0;visibility:hidden;transition:opacity 0.3s}
-body.is-authorized{opacity:1;visibility:visible}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-img{max-width:100%;height:auto}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;transition:color 0.2s}
+a:hover{text-decoration:underline;color:#d32f2f}
+img{max-width:100%;height:auto;display:block}
 .container{max-width:var(--max-width);margin:0 auto;padding:0 var(--gap)}
 
 /* Top Bar */
@@ -105,7 +101,7 @@ img{max-width:100%;height:auto}
 .nav-menu #navbar .widget{display:contents}
 .nav-menu a{display:block;padding:14px 18px;color:#333;font-weight:600;font-size:13px;text-transform:uppercase;transition:all 0.2s}
 .nav-menu a:hover,.nav-menu a.active{background:var(--accent);color:#fff;text-decoration:none}
-.nav-home{background:var(--accent2) !important;color:#fff !important;display:flex !important;align-items:center;padding:10px 18px !important}
+.nav-home{color:#fff !important;display:flex !important;align-items:center;padding:10px 18px !important}
 .nav-home:hover{background:#c1121f !important}
 .nav-home img{max-height:24px;width:auto;display:block;background:transparent !important}
 
@@ -261,19 +257,23 @@ img{max-width:100%;height:auto}
 .single-content{padding:10px 24px 24px}
 .single-content > *:first-child{margin-top:0 !important}
 .single-content .separator:first-child{display:none}
-.single-content p{margin-bottom:18px;font-size:16px;line-height:1.9;color:#333}
-.single-content h2,.single-content h3{margin:24px 0 16px;color:#111}
+/* Typography for Reading Comfort */
+.single-content p{margin-bottom:1.5em;font-size:1.125rem;line-height:1.8;color:#1a1a1a;letter-spacing:0.01em;max-width:800px}
+.single-content h2,.single-content h3,.single-content h4{margin:40px 0 20px;color:#000;font-weight:700;line-height:1.3;max-width:800px}
+.single-content h2{font-size:1.75rem}
+.single-content h3{font-size:1.5rem}
+.single-content h4{font-size:1.25rem}
 .single-content .separator:first-of-type, 
 .single-content table.tr-caption-container:first-of-type, 
 .single-content figure:first-of-type {display:none !important}
-.single-content img{border-radius:var(--radius);margin:20px 0}
-.single-content blockquote{border-left:4px solid var(--accent);padding:16px 20px;background:#f8f9fa;margin:20px 0;font-style:italic}
-.single-content ul,.single-content ol{margin:16px 0;padding-left:24px}
-.single-content li{margin-bottom:8px}
-.single-tags{padding:20px 24px;border-top:1px solid #eee;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.single-tags span{font-weight:600;color:#333}
-.single-tags a{display:inline-block;padding:4px 12px;background:#f0f0f0;border-radius:4px;font-size:12px;color:#555}
-.single-tags a:hover{background:var(--accent);color:#fff}
+.single-content img{border-radius:var(--radius);margin:24px 0;box-shadow:0 4px 6px rgba(0,0,0,0.1)}
+.single-content blockquote{border-left:4px solid var(--accent);padding:16px 24px;background:#f9fafb;margin:32px 0;font-style:italic;font-size:1.1rem;color:#4b5563;border-radius:0 var(--radius) var(--radius) 0}
+.single-content ul,.single-content ol{margin:24px 0;padding-left:24px;color:#1a1a1a;font-size:1.125rem;line-height:1.8;max-width:800px}
+.single-content li{margin-bottom:12px;padding-left:8px}
+.single-tags{padding:24px;border-top:1px solid #f3f4f6;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.single-tags span{font-weight:600;color:#374151}
+.single-tags a{display:inline-block;padding:6px 14px;background:#f3f4f6;border-radius:20px;font-size:13px;color:#4b5563;transition:all 0.2s}
+.single-tags a:hover{background:var(--accent);color:#fff;transform:translateY(-2px);text-decoration:none}
 .single-share{padding:20px 24px;border-top:1px solid #eee;display:flex;gap:10px;align-items:center}
 .single-share span{font-weight:600;color:#333;margin-right:10px}
 .share-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;color:#fff;font-size:14px}
@@ -326,18 +326,20 @@ img{max-width:100%;height:auto}
 .site-footer .widget{background:transparent !important;border:none !important;box-shadow:none !important;margin:0;padding:0}
 .site-footer section{background:transparent !important}
 
-/* Ad Widget Container */
-.ad-top-container{text-align:center;padding:10px 0;background:#f5f5f5}
-.ad-top-container img{max-width:100%;height:auto}
-.ad-widget{margin-bottom:24px;text-align:center}
-.ad-widget .ad-title{font-size:12px;color:#999;text-transform:uppercase;margin-bottom:8px}
-.ad-widget .ad-content{background:#fff;border-radius:var(--radius);padding:16px;min-height:100px;display:flex;align-items:center;justify-content:center}
+/* Advert Box Container */
+.advert-box{margin-bottom:24px;text-align:center;clear:both;width:100%}
+.advert-box .advert-label{font-size:12px;color:#999;text-transform:uppercase;margin-bottom:8px;display:block}
+.advert-box .advert-inner{background:#fff;border-radius:var(--radius);padding:16px;min-height:50px;display:block;overflow:hidden;width:100%}
+.advert-box .advert-inner img{width:100%;max-width:100%;height:auto;display:block;margin:0 auto;object-fit:contain}
+.advert-box .advert-inner ins, .advert-box .advert-inner iframe {max-width:100% !important;display:block !important;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,0.1)}
 .footer-col{background:transparent}
 .footer-col h4{font-size:16px;font-weight:700;margin-bottom:20px;color:#fff;position:relative;padding-bottom:10px}
 .footer-col h4::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:3px;background:var(--accent2)}
 .footer-about p{color:#fff;font-size:13px;line-height:1.7}
 .footer-social{display:flex;gap:10px;margin-top:16px}
+.footer-logo{margin-top:20px;display:block}
+.footer-logo img{max-height:50px;width:auto;display:block}
 .footer-social a,.footer-social a:visited{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.1);color:#fff;border-radius:50%;transition:all 0.3s}
 .footer-social a:hover{background:var(--accent2);transform:translateY(-3px)}
 .footer-col ul{list-style:none;margin:0;padding:0}
@@ -350,75 +352,133 @@ img{max-width:100%;height:auto}
 .contact-list a:hover{color:var(--accent2)}
 .footer-bottom{text-align:center;padding:20px 0;background:rgba(0,0,0,0.2);margin-top:30px;font-size:12px;color:#fff}
 
-/* Responsive */
+/* Responsive Improvements */
+@media(max-width:1024px){
+  .container{padding:0 15px}
+  .header-inner{justify-content:center;text-align:center;gap:15px}
+  .logo{width:100%;margin-bottom:10px}
+  .search-form{width:100%;max-width:500px}
+}
+
 @media(max-width:992px){
-  .main-layout{grid-template-columns:1fr}
-  .content-area{order:1}
+  :root{--sidebar:100%}
+  .main-layout{grid-template-columns:1fr;gap:25px}
   .sidebar{order:2}
-  .footer-top{grid-template-columns:1fr 1fr}
+  .content-area{order:1}
+  .footer-top{grid-template-columns:repeat(2,1fr)}
   .category-row{grid-template-columns:1fr}
 }
+
 @media(max-width:768px){
   .top-bar{display:none}
-  .header-inner{flex-direction:column;gap:12px;text-align:center}
-  .logo{order:1}
-  .search-form{order:2;width:100%;max-width:100%}
-  .search-form input{flex:1}
-  .nav-menu{flex-wrap:wrap;justify-content:center}
+  .nav-menu{justify-content:center}
   .nav-menu a{padding:10px 12px;font-size:12px}
   .breaking-inner{flex-direction:column}
-  .breaking-label{justify-content:center;padding:10px}
-  .ticker-wrap{padding:10px}
-  .hero-slider{height:250px}
-  .slide-title{font-size:18px}
-  .slide-meta{font-size:11px}
-  .slider-nav button{width:36px;height:36px}
+  .breaking-label{width:100%;justify-content:center}
+  .hero-slider{height:300px}
+  .slide-title{font-size:20px}
   .featured-grid{grid-template-columns:1fr 1fr}
-  .posts-grid,.related-grid{grid-template-columns:1fr 1fr}
-  .cat-grid{grid-template-columns:1fr 1fr}
+  .posts-grid, .related-grid, .cat-grid{grid-template-columns:1fr 1fr}
   .cat-list-item{flex-direction:column}
-  .cat-list-thumb{width:100%;height:180px}
+  .cat-list-thumb{width:100%;height:200px}
   .hentry{flex-direction:column}
-  .hentry .post-thumbnail{width:100%;height:200px}
-  .single-post-wrap{padding:16px}
-  .single-title{font-size:22px}
-  .single-meta{flex-wrap:wrap;gap:8px}
-  .post-body{font-size:16px}
-  .single-content img{margin:10px 0}
-  .footer-top{grid-template-columns:1fr}
-  .footer-col{margin-bottom:20px}
-  .widget{margin-bottom:16px}
-  .widget-title{font-size:16px;padding:12px 16px}
-  .post-item{padding:12px}
-  .post-thumb{width:80px;height:60px}
-  .post-title{font-size:13px}
+  .hentry .post-thumbnail{width:100%;height:220px}
+  
+  /* Mobile Readability */
+  .single-content{padding:10px 20px 24px}
+  .single-content p{font-size:1.0625rem;line-height:1.75} /* ~17px */
+  .single-content h2{font-size:1.5rem}
+  .single-content h3{font-size:1.25rem}
+  .single-content blockquote{font-size:1rem;padding:12px 16px;margin:24px 0}
 }
-@media(max-width:480px){
-  .site-header{padding:12px 0}
-  .logo{font-size:22px}
-  .logo img{max-height:40px}
-  .search-form input{padding:8px 12px;font-size:12px}
-  .search-form button{padding:8px 14px}
-  .hero-slider{height:200px}
-  .slide-title{font-size:14px;-webkit-line-clamp:2}
+
+@media(max-width:640px){
+  .hero-slider{height:250px}
   .featured-grid, .posts-grid, .related-grid, .cat-grid{grid-template-columns:1fr}
-  .slide-cat{font-size:9px;padding:3px 8px}
-  .slide-meta{display:none}
-  .featured-item{height:180px}
-  .cat-grid-thumb{height:140px}
-  .cat-grid-title{font-size:13px;padding:10px}
-  .cat-label{font-size:9px;margin:0 10px 10px}
-  .card-title{font-size:14px;padding:12px 14px}
-  .see-all{font-size:10px}
-  .single-title{font-size:18px}
-  .single-meta{font-size:11px;flex-direction:column;align-items:flex-start}
-  .post-body{font-size:14px}
-  .post-body img{margin:12px 0}
-  .related-title{font-size:18px}
-  .blog-pager{flex-direction:column;gap:8px}
-  .blog-pager a{padding:10px 16px;font-size:12px}
-  .footer-social a{width:32px;height:32px}
-  .footer-bottom{font-size:11px}
+  .footer-top{grid-template-columns:1fr}
+  .single-title{font-size:1.75rem;line-height:1.3}
+  .nav-menu a{padding:8px 10px;font-size:11px}
+}
+
+/* Mobile Optimization - Full Width Stack (Card Style) */
+@media(max-width:480px){
+  /* Container & Layout */
+  .container{padding:0 15px}
+  .main-layout{display:flex;flex-direction:column;gap:30px}
+  .content-area{width:100%}
+  .sidebar{width:100%;margin-top:30px}
+
+  /* Header */
+  .site-header{padding:15px 0}
+  .header-inner{flex-direction:column;gap:15px;text-align:center}
+  .logo{font-size:24px;width:100%}
+  .logo img{max-height:50px;margin:0 auto}
+  .search-form{width:100%}
+  .search-form input{width:100%}
+  
+  /* Navigation - Scroll Horizontal */
+  .main-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;padding-bottom:5px}
+  .nav-menu{flex-wrap:nowrap;display:flex}
+  .nav-menu a{padding:12px 15px;font-size:14px;white-space:nowrap}
+
+  /* Hero Slider */
+  .hero-slider{height:250px;margin-bottom:20px;border-radius:var(--radius)}
+  .slide-title{font-size:18px;bottom:15px;left:15px;right:15px}
+  
+  /* RESET SEMUA GRID MENJADI 1 KOLOM (TUMPUK) */
+  .featured-grid, .posts-grid, .related-grid, .cat-grid, .category-row{
+    display:grid !important;
+    grid-template-columns:1fr !important; /* Paksa 1 kolom */
+    gap:20px !important;
+  }
+  
+  /* Reset Flex menjadi Column (Gambar Atas, Teks Bawah) */
+  .post-item, .cat-list-item, .trending-item{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    border-bottom:1px solid #eee;
+    padding-bottom:20px;
+    margin-bottom:10px;
+  }
+  
+  /* GAMBAR FULL WIDTH */
+  .post-thumb, .cat-grid-thumb, .cat-list-thumb, .featured-item img, .post-item img{
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio: 16/9; /* Rasio gambar standar */
+    max-width:100%;
+    margin:0;
+  }
+  
+  /* Typography Mobile yang Besar & Nyaman */
+  .post-title, .cat-grid-title, .cat-list-title, .entry-title{
+    font-size:18px !important; /* Judul Besar */
+    line-height:1.4;
+    margin-top:10px;
+    font-weight:700;
+  }
+  .post-cat, .cat-label{
+    font-size:11px;
+    padding:4px 8px;
+    margin-bottom:8px;
+    display:inline-block;
+  }
+  
+  /* Single Post Readability */
+  .single-header{padding:0}
+  .single-title{font-size:24px;line-height:1.3;margin-top:10px}
+  .single-content{padding:10px 0 30px}
+  .single-content p{font-size:17px;line-height:1.7;color:#222;margin-bottom:20px}
+  .single-content img{width:100%;height:auto;margin:20px 0}
+  
+  /* Sembunyikan elemen sidebar yang tidak perlu di mobile */
+  .sidebar .widget:not(#PopularPosts1):not(#HTML10){display:none} /* Hanya tampilkan Populer & Trending */
+  
+  /* Footer Stack */
+  .footer-top{grid-template-columns:1fr;text-align:center}
+  .footer-col h4::after{left:50%;transform:translateX(-50%)}
+  .footer-social{justify-content:center}
 }
 ]]></b:skin>
 
@@ -765,69 +825,66 @@ function trendingPosts(containerId, count) {
 // Related Posts
 function loadRelated(containerId, label, count) {
   var container = document.getElementById(containerId);
-  if (!container) {
-    setTimeout(function() { loadRelated(containerId, label, count); }, 100);
-    return;
-  }
-  
-  var safeId = containerId.replace(/-/g,'_');
+  if (!container) return;
+
   var script = document.createElement('script');
-  var fetchCount = 10; // Cukup ambil 10 untuk pencarian label
-  var feedUrl = (label && label.trim() !== "") ? '/feeds/posts/default/-/' + encodeURIComponent(label.trim()) : '/feeds/posts/default';
-  script.src = feedUrl + '?alt=json-in-script&max-results=' + fetchCount + '&callback=renderRelated_' + safeId;
-  document.head.appendChild(script);
+  var callbackName = 'renderRelated_' + containerId.replace(/-/g, '_') + '_' + Math.floor(Math.random() * 1000);
   
-  window['renderRelated_' + safeId] = function(data) {
-    var container = document.getElementById(containerId);
-    if (!container) return;
+  // Bersihkan label dari spasi berlebih
+  label = label ? label.trim() : "";
+  var feedUrl = label !== "" ? '/feeds/posts/default/-/' + encodeURIComponent(label) : '/feeds/posts/default';
+  
+  script.src = feedUrl + '?alt=json-in-script&max-results=10&callback=' + callbackName;
+  
+  window[callbackName] = function(data) {
     var entries = data.feed.entry || [];
     var html = '';
-    var currentUrl = window.location.pathname; // Bandingkan path saja agar lebih akurat
+    var currentUrl = window.location.href.split('?')[0].split('#')[0].replace(/\/$/, "");
     
-    // Acak urutan jika ada lebih dari cukup berita
-    if (entries.length > 1) {
-      entries.sort(function() { return 0.5 - Math.random(); });
-    }
+    // Acak hasil
+    entries.sort(function() { return 0.5 - Math.random(); });
     
     var displayed = 0;
     for (var i = 0; i < entries.length; i++) {
       if (displayed >= count) break;
       var entry = entries[i];
-      var title = escapeHtml(entry.title.$t);
-      var url = '';
+      var title = entry.title.$t;
+      var url = "";
+      
       for (var j = 0; j < entry.link.length; j++) {
-        if (entry.link[j].rel === 'alternate') { 
-          url = entry.link[j].href; 
-          break; 
+        if (entry.link[j].rel === 'alternate') {
+          url = entry.link[j].href.split('?')[0].split('#')[0].replace(/\/$/, "");
+          break;
         }
       }
       
-      // Filter: Jangan tampilkan artikel yang sedang dibaca
-      var postPath = new URL(url).pathname;
-      if (postPath === currentUrl) continue;
+      if (url === currentUrl) continue;
 
       var thumb = 'https://via.placeholder.com/300x200?text=No+Image';
       if (entry.media$thumbnail) {
-        thumb = sanitizeImg(entry.media$thumbnail.url.replace('/s72-c/', '/w350-h220-c/'));
+        thumb = entry.media$thumbnail.url.replace('/s72-c/', '/w350-h220-c/');
       }
       
       html += '<div class="grid-post">';
-      html += '<div class="post-thumb"><a href="' + url + '"><img src="' + thumb + '"/></a></div>';
+      html += '<div class="post-thumb"><a href="' + url + '"><img src="' + thumb + '" alt="' + title + '"/></a></div>';
       html += '<div class="post-info">';
       html += '<div class="post-title" style="font-size:12px;line-height:1.4;"><a href="' + url + '">' + title + '</a></div>';
       html += '</div></div>';
       displayed++;
     }
     
-    if (html === '' && label !== '') {
-      // Jika kosong (mungkin hanya ada 1 post di label tsb), ambil post terbaru saja
-      loadRelated(containerId, '', count);
-    } else if (html !== '') {
-      container.innerHTML = html;
+    if (html === '' && label !== "") {
+      loadRelated(containerId, "", count); // Fallback ke berita terbaru
     } else {
-      container.innerHTML = '<p style="padding:20px;color:#999;text-align:center;">Tidak ada berita lainnya.</p>';
+      container.innerHTML = html || '<p style="padding:20px;color:#999;text-align:center;">Tidak ada berita lainnya.</p>';
     }
+    
+    // Hapus script dan callback setelah selesai
+    delete window[callbackName];
+    script.remove();
   };
+  
+  document.head.appendChild(script);
 }
 
 
@@ -850,6 +907,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </head>
 <body>
+<div id='fb-root'></div>
+<script>//<![CDATA[
+window.fbAsyncInit = function() {
+  FB.init({
+    xfbml            : true,
+    version          : 'v18.0'
+  });
+};
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/id_ID/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+//]]></script>
 
 <!-- Top Bar (hidden on mobile) -->
 <div class='top-bar'>
@@ -861,16 +935,16 @@ document.addEventListener('DOMContentLoaded', function() {
   <b:widget id='LinkList5' locked='false' title='Social Top' type='LinkList' version='1'>
     <b:widget-settings>
       <b:widget-setting name='sorting'>NONE</b:widget-setting>
-      <b:widget-setting name='text-1'>Tiktok</b:widget-setting>
-      <b:widget-setting name='link-1'>https://#</b:widget-setting>
+      <b:widget-setting name='text-1'>TikTok</b:widget-setting>
+      <b:widget-setting name='link-1'>https://justinfo.id</b:widget-setting>
       <b:widget-setting name='text-0'>Twitter</b:widget-setting>
-      <b:widget-setting name='link-0'>https://#</b:widget-setting>
+      <b:widget-setting name='link-0'>https://justinfo.id</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
 <b:loop values='data:links' var='link'>
 <a expr:href='data:link.target' expr:title='data:link.name' rel='noopener noreferrer' target='_blank'>
 <b:if cond='data:link.name contains &quot;Facebook&quot;'><i class='fab fa-facebook-f'/></b:if>
-<b:if cond='data:link.name contains &quot;Twitter&quot;'><i class='fab fa-twitter'/></b:if>
+<b:if cond='data:link.name contains &quot;Twitter&quot; or data:link.name contains &quot;X&quot;'><i class='fab fa-x-twitter'/></b:if>
 <b:if cond='data:link.name contains &quot;Instagram&quot;'><i class='fab fa-instagram'/></b:if>
 <b:if cond='data:link.name contains &quot;YouTube&quot;'><i class='fab fa-youtube'/></b:if>
 <b:if cond='data:link.name contains &quot;TikTok&quot;'><i class='fab fa-tiktok'/></b:if>
@@ -893,8 +967,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <b:section id='header' maxwidgets='1' showaddelement='yes'>
   <b:widget id='Header1' locked='false' title='JustInfo.id (Header)' type='Header' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEjlt73lr-K8ruayEv-QWTzQULy-MtnxnDGny0f3J8gCWEPXa-gNid9L16stcHt8UZ-QFQqiXzaxv4oaGvY1IsJ26l_dCijLVSmjwwrRM6bWqPAeyF3167neJSNi2OTqfL45O2vlHcsctMiwdmAk-yHWSBp9SQMXz70N4lbf2GJ5nBGFZvclygnOr3Ja_vqw=s1600</b:widget-setting>
-      <b:widget-setting name='displayHeight'>539</b:widget-setting>
+      <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEiHxkXh9qb1gZDVCBADpvhYmnSt9AhZ9gX13yWiWvjNJJR9O5XwerajZKquEca-HCeUCjffG2CV9Agn6P59PMG8IugLhLGYegwbZVHUHMacRIkQmW8q7Rb690jOPGj7LCWjNRraHn6uZ3EzbtNeo-1WEcFwsOfm14e5Cm1gvZyLK2fKuTC4wkcXapdeDmEh=s1600</b:widget-setting>
+      <b:widget-setting name='displayHeight'>402</b:widget-setting>
       <b:widget-setting name='sectionWidth'>150</b:widget-setting>
       <b:widget-setting name='useImage'>true</b:widget-setting>
       <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
@@ -940,24 +1014,26 @@ document.addEventListener('DOMContentLoaded', function() {
 <b:section id='navbar' maxwidgets='1' showaddelement='yes'>
   <b:widget id='LinkList1' locked='false' title='Menu' type='LinkList' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='text-8'>TECHNOLOGY</b:widget-setting>
-      <b:widget-setting name='link-7'>/search/label/SPORT</b:widget-setting>
-      <b:widget-setting name='link-8'>/search/label/TECHNOLOGY</b:widget-setting>
-      <b:widget-setting name='link-5'>/search/label/GAYA%20HIDUP</b:widget-setting>
-      <b:widget-setting name='link-6'>/search/label/SOSOK</b:widget-setting>
-      <b:widget-setting name='link-3'>/search/label/KESEHATAN/</b:widget-setting>
-      <b:widget-setting name='link-4'>/search/label/AGAMA</b:widget-setting>
-      <b:widget-setting name='text-1'>DAERAH </b:widget-setting>
+      <b:widget-setting name='text-9'>TECHNOLOGY</b:widget-setting>
+      <b:widget-setting name='link-9'>/search/label/TECHNOLOGY</b:widget-setting>
+      <b:widget-setting name='text-8'>SPORT</b:widget-setting>
+      <b:widget-setting name='link-7'>/search/label/SOSOK</b:widget-setting>
+      <b:widget-setting name='link-8'>/search/label/SPORT</b:widget-setting>
+      <b:widget-setting name='link-5'>/search/label/AGAMA</b:widget-setting>
+      <b:widget-setting name='link-6'>/search/label/GAYA%20HIDUP</b:widget-setting>
+      <b:widget-setting name='link-3'>/search/label/EDUKASI/</b:widget-setting>
+      <b:widget-setting name='link-4'>/search/label/KESEHATAN/</b:widget-setting>
+      <b:widget-setting name='text-1'>NASIONAL</b:widget-setting>
       <b:widget-setting name='text-0'>BREAKING NEWS</b:widget-setting>
-      <b:widget-setting name='text-3'>KESEHATAN </b:widget-setting>
-      <b:widget-setting name='text-2'>EDUKASI</b:widget-setting>
-      <b:widget-setting name='text-5'>GAYA HIDUP </b:widget-setting>
-      <b:widget-setting name='text-4'>AGAMA</b:widget-setting>
-      <b:widget-setting name='text-7'>SPORT</b:widget-setting>
-      <b:widget-setting name='text-6'>SOSOK</b:widget-setting>
+      <b:widget-setting name='text-3'>EDUKASI</b:widget-setting>
+      <b:widget-setting name='text-2'>DAERAH </b:widget-setting>
+      <b:widget-setting name='text-5'>AGAMA</b:widget-setting>
+      <b:widget-setting name='text-4'>KESEHATAN </b:widget-setting>
+      <b:widget-setting name='text-7'>SOSOK</b:widget-setting>
+      <b:widget-setting name='text-6'>GAYA HIDUP </b:widget-setting>
       <b:widget-setting name='sorting'>NONE</b:widget-setting>
-      <b:widget-setting name='link-1'>/search/label/DAERAH/</b:widget-setting>
-      <b:widget-setting name='link-2'>/search/label/EDUKASI/</b:widget-setting>
+      <b:widget-setting name='link-1'>/search/label/NASIONAL</b:widget-setting>
+      <b:widget-setting name='link-2'>/search/label/DAERAH/</b:widget-setting>
       <b:widget-setting name='link-0'>/search/label/BREAKING%20NEWS/</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
@@ -991,46 +1067,48 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- MAIN CONTENT -->
 <div class='content-area'>
 
+<!-- Iklan Global Atas (Muncul di Semua Halaman) -->
+<b:section id='ad-before-slider' maxwidgets='1' showaddelement='yes'>
+  <b:widget id='HTML99' locked='false' title='' type='HTML' version='1'>
+    <b:widget-settings>
+      <b:widget-setting name='content'><![CDATA[<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSMf3zTIzVSwPRD9ss9mkPrH_PTLMhF-BgawNwyXxE_0PZp8OZhZZAfv_DUlmo5Oh2SKLDzfWV1Ifvm88yj62K4WQh3_subOe60y9r5tnwR7483lhbM1cQszzHabbSVDw_BZNu5r5_EBnkQ6U5-RooreK-3roV9j3PSTMcBXAOgL852c3JCMemGVtuwagU/s1200/IBU-BUPATI.jpeg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSMf3zTIzVSwPRD9ss9mkPrH_PTLMhF-BgawNwyXxE_0PZp8OZhZZAfv_DUlmo5Oh2SKLDzfWV1Ifvm88yj62K4WQh3_subOe60y9r5tnwR7483lhbM1cQszzHabbSVDw_BZNu5r5_EBnkQ6U5-RooreK-3roV9j3PSTMcBXAOgL852c3JCMemGVtuwagU/w640-h150/IBU-BUPATI.jpeg" /></a>]]></b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+  <b:if cond='data:content != &quot;&quot;'>
+    <div class='advert-box'>
+      <b:if cond='data:title != &quot;&quot;'><div class='advert-label'><data:title/></div></b:if>
+      <div class='advert-inner'><data:content/></div>
+    </div>
+  </b:if>
+</b:includable>
+  </b:widget>
+</b:section>
+
 <!-- Homepage Only Content -->
 <b:if cond='data:view.isHomepage'>
 
 <!-- Hero Slider -->
 <div class='hero-slider' id='main-slider'/>
 <script>loadSlider(&#39;main-slider&#39;, &#39;&#39;, 5);</script>
-
-<!-- Iklan Setelah Slider -->
-<b:section id='ad-after-slider' maxwidgets='1' showaddelement='yes'>
-  <b:widget id='HTML99' locked='false' title='Iklan' type='HTML' version='1'>
-    <b:widget-settings>
-      <b:widget-setting name='content'>BREAKING</b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-<b:if cond='data:content != &apos;&apos;'>
-<div class='ad-widget'>
-<b:if cond='data:title != &apos;&apos;'><div class='ad-title'><data:title/></div></b:if>
-<div class='ad-content'><data:content/></div>
-</div>
 </b:if>
-</b:includable>
-  </b:widget>
-</b:section>
 
+<b:if cond='data:view.isHomepage'>
 <!-- Featured Posts Grid -->
 <div class='featured-grid' id='featured-posts'/>
 <script>loadFeatured(&#39;featured-posts&#39;, &#39;&#39;, 4);</script>
 
 <!-- Category Sections - Tambahkan Widget dari Tata Letak -->
 <b:section id='homepage-content' showaddelement='yes'>
-  <b:widget id='HTML7' locked='false' title='DAERAH' type='HTML'>
+  <b:widget id='HTML6' locked='false' title='' type='HTML'>
     <b:widget-settings>
-      <b:widget-setting name='content'>DAERAH</b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB__tMyEnf9CDR4ICsClLaSj9UtS-hwmCSGYPtDdC10PeF8pEy8I6xJ_8qfgGOUns27g__4eKdd6OdxCTm0HK17uXmWGQsx-XBUuntdYsFgNxEochJu5wpPbQ7F766FzMoX6ojf-dP8MJR00ICcREpQHf7SueWllKnCiDNO_Vll3wOvgVbAeeA66aw4sd3/s1200/ACHMAD-FAUZAN-GUNTUR-S.E.-M.M.jpg.jpeg"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB__tMyEnf9CDR4ICsClLaSj9UtS-hwmCSGYPtDdC10PeF8pEy8I6xJ_8qfgGOUns27g__4eKdd6OdxCTm0HK17uXmWGQsx-XBUuntdYsFgNxEochJu5wpPbQ7F766FzMoX6ojf-dP8MJR00ICcREpQHf7SueWllKnCiDNO_Vll3wOvgVbAeeA66aw4sd3/w640-h145/ACHMAD-FAUZAN-GUNTUR-S.E.-M.M.jpg.jpeg" /></a>]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
 <b:if cond='data:content contains &quot;&lt;&quot;'>
 <!-- Jika konten mengandung HTML (iklan/script) -->
-<div class='ad-widget'>
-<b:if cond='data:title != &quot;&quot;'><div class='ad-title'><data:title/></div></b:if>
-<div class='ad-content'><data:content/></div>
+<div class='advert-box'>
+<b:if cond='data:title != &quot;&quot;'><div class='advert-label'><data:title/></div></b:if>
+<div class='advert-inner'><data:content/></div>
 </div>
 <b:else/>
 <!-- Jika konten hanya teks (nama label) -->
@@ -1044,11 +1122,19 @@ document.addEventListener('DOMContentLoaded', function() {
 </b:if>
 </b:includable>
   </b:widget>
-  <b:widget id='HTML4' locked='false' title='SULSEL' type='HTML' version='1'>
+  <b:widget id='HTML7' locked='false' title='DAERAH' type='HTML'>
     <b:widget-settings>
-      <b:widget-setting name='content'>SULSEL</b:widget-setting>
+      <b:widget-setting name='content'>DAERAH</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
+<b:if cond='data:content contains &quot;&lt;&quot;'>
+<!-- Jika konten mengandung HTML (iklan/script) -->
+<div class='advert-box'>
+<b:if cond='data:title != &quot;&quot;'><div class='advert-label'><data:title/></div></b:if>
+<div class='advert-inner'><data:content/></div>
+</div>
+<b:else/>
+<!-- Jika konten hanya teks (nama label) -->
 <div class='category-section'>
 <div class='card-header'>
 <div class='card-title'><data:title/> <a class='see-all' expr:href='&quot;/search/label/&quot; + data:content'>+Selengkapnya</a></div>
@@ -1056,6 +1142,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class='card-body' expr:id='&quot;cat-&quot; + data:widget.instanceId'/>
 <script>labelFeed(&#39;cat-<data:widget.instanceId/>&#39;, &#39;<data:content/>&#39;, 5);</script>
 </div>
+</b:if>
 </b:includable>
   </b:widget>
   <b:widget id='HTML3' locked='false' title='SOSOK' type='HTML' version='1'>
@@ -1070,29 +1157,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class='card-body' expr:id='&quot;cat-&quot; + data:widget.instanceId'/>
 <script>labelFeed(&#39;cat-<data:widget.instanceId/>&#39;, &#39;<data:content/>&#39;, 5);</script>
 </div>
-</b:includable>
-  </b:widget>
-  <b:widget id='HTML6' locked='false' title='IKLAN' type='HTML'>
-    <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[<img src="https://scontent.fupg6-1.fna.fbcdn.net/v/t39.30808-6/484817093_1042840671224862_1189779673950572085_n.jpg?stp=dst-jpg_p843x403_tt6&amp;_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=833d8c&amp;_nc_ohc=GLVRjcRVFNcQ7kNvwEyFDKm&amp;_nc_oc=AdkrVLIcyIhTkjr8kzOwZBwLt2kQ724i6c88PKPAzMcL3B0BZdyWi-4cGlseF4Zhry0&amp;_nc_zt=23&amp;_nc_ht=scontent.fupg6-1.fna&amp;_nc_gid=cL5zLZSqosM-U48tHlO12w&amp;oh=00_AfuDuo5BHmAmJ65APa61WbM5L4QoQblzs0HRKFYxmqg1NA&amp;oe=6988E413" />]]></b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-<b:if cond='data:content contains &quot;&lt;&quot;'>
-<!-- Jika konten mengandung HTML (iklan/script) -->
-<div class='ad-widget'>
-<b:if cond='data:title != &quot;&quot;'><div class='ad-title'><data:title/></div></b:if>
-<div class='ad-content'><data:content/></div>
-</div>
-<b:else/>
-<!-- Jika konten hanya teks (nama label) -->
-<div class='category-section'>
-<div class='card-header'>
-<div class='card-title'><data:title/> <a class='see-all' expr:href='&quot;/search/label/&quot; + data:content'>+Selengkapnya</a></div>
-</div>
-<div class='card-body' expr:id='&quot;cat-&quot; + data:widget.instanceId'/>
-<script>labelFeed(&#39;cat-<data:widget.instanceId/>&#39;, &#39;<data:content/>&#39;, 5);</script>
-</div>
-</b:if>
 </b:includable>
   </b:widget>
   <b:widget id='HTML5' locked='false' title='OLAHRAGA' type='HTML' version='1'>
@@ -1283,7 +1347,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class='single-share'>
 <span><i class='fas fa-share-alt'/> Share:</span>
 <a class='share-btn fb' expr:href='&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:post.url' rel='nofollow' target='_blank' title='Facebook'><i class='fab fa-facebook-f'/></a>
-<a class='share-btn tw' expr:href='&quot;https://twitter.com/intent/tweet?url=&quot; + data:post.url + &quot;&amp;text=&quot; + data:post.title' rel='nofollow' target='_blank' title='Twitter'><i class='fab fa-twitter'/></a>
+<a class='share-btn tw' expr:href='&quot;https://twitter.com/intent/tweet?url=&quot; + data:post.url + &quot;&amp;text=&quot; + data:post.title' rel='nofollow' target='_blank' title='Twitter'><i class='fab fa-x-twitter'/></a>
 <a class='share-btn wa' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.title + &quot; &quot; + data:post.url' rel='nofollow' target='_blank' title='WhatsApp'><i class='fab fa-whatsapp'/></a>
 <a class='share-btn tg' expr:href='&quot;https://t.me/share/url?url=&quot; + data:post.url' rel='nofollow' target='_blank' title='Telegram'><i class='fab fa-telegram-plane'/></a>
 </div>
@@ -1294,13 +1358,15 @@ document.addEventListener('DOMContentLoaded', function() {
 <span class='card-title'><i class='fas fa-newspaper'/> Berita Terkait</span>
 </div>
 <div class='card-body'>
-<div class='related-grid' id='related-posts'/>
 <b:if cond='data:post.labels'>
-<b:loop values='data:post.labels' var='label'>
-<b:if cond='data:label.isFirst'>
-<script>loadRelated(&#39;related-posts&#39;, &#39;<data:label.name/>&#39;, 5);</script>
-</b:if>
-</b:loop>
+  <div class='related-grid' expr:data-label='data:post.labels.first.name' id='related-posts'/>
+  <script>
+    var relCont = document.getElementById(&#39;related-posts&#39;);
+    loadRelated(&#39;related-posts&#39;, relCont.getAttribute(&#39;data-label&#39;), 6);
+  </script>
+<b:else/>
+  <div class='related-grid' id='related-posts'/>
+  <script>loadRelated(&#39;related-posts&#39;, &#39;&#39;, 6);</script>
 </b:if>
 </div>
 </div>
@@ -1308,9 +1374,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Facebook Comments - Aligned with content -->
 <div class='fb-comments-section' style='margin-top:20px;'>
 <h3 class='fb-comments-title'><i class='fab fa-facebook'/> Komentar Facebook</h3>
-<div id='fb-root'/>
-<script async='async' crossorigin='anonymous' defer='defer' nonce='randomNonce' src='https://connect.facebook.net/id_ID/sdk.js#xfbml=1&amp;version=v18.0'/>
-<div class='fb-comments' expr:data-href='data:blog.canonicalUrl' data-colorscheme='light' data-numposts='10' data-order-by='reverse_time' data-width='100%'/>
+<div class='fb-comments' data-adapt-container-width='true' data-colorscheme='light' data-numposts='10' data-order-by='reverse_time' data-width='100%' expr:data-href='data:blog.canonicalUrl'></div>
 </div>
 
 </div>
@@ -1384,6 +1448,20 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Sidebar untuk Homepage / Archive / Search -->
 <b:if cond='data:view.isLayoutMode or data:view.isHomepage or data:view.isArchive or data:view.search'>
 <b:section id='sidebar-home' showaddelement='yes'>
+  <b:widget id='HTML10' locked='false' title='Trending' type='HTML' version='1'>
+    <b:widget-settings>
+      <b:widget-setting name='content'/>
+    </b:widget-settings>
+    <b:includable id='main'>
+<div class='widget'>
+<div class='widget-header'>
+<div class='widget-title'><i class='fas fa-chart-line'/> <data:title/></div>
+</div>
+<div class='widget-content' id='trending-posts'/>
+<script>trendingPosts(&#39;trending-posts&#39;, 5);</script>
+</div>
+</b:includable>
+  </b:widget>
   <b:widget id='PopularPosts1' locked='false' title='Berita Populer' type='PopularPosts' version='1'>
     <b:widget-settings>
       <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
@@ -1416,20 +1494,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </b:loop>
 </div>
-</div>
-</b:includable>
-  </b:widget>
-  <b:widget id='HTML10' locked='false' title='Trending' type='HTML' version='1'>
-    <b:widget-settings>
-      <b:widget-setting name='content'/>
-    </b:widget-settings>
-    <b:includable id='main'>
-<div class='widget'>
-<div class='widget-header'>
-<div class='widget-title'><i class='fas fa-chart-line'/> <data:title/></div>
-</div>
-<div class='widget-content' id='trending-posts'/>
-<script>trendingPosts(&#39;trending-posts&#39;, 5);</script>
 </div>
 </b:includable>
   </b:widget>
@@ -1513,8 +1577,8 @@ document.addEventListener('DOMContentLoaded', function() {
   </b:widget>
   <b:widget id='HTML12' locked='false' title='' type='HTML' version='1'>
     <b:includable id='main'>
-<div class='widget ad-widget'>
-<data:content/>
+<div class='widget advert-box'>
+<div class='advert-inner'><data:content/></div>
 </div>
 </b:includable>
   </b:widget>
@@ -1529,13 +1593,13 @@ document.addEventListener('DOMContentLoaded', function() {
     </b:widget-settings>
     <b:includable id='main'>
 <b:if cond='data:content != &quot;&quot;'>
-<div class='widget ad-widget'>
+<div class='widget advert-box'>
 <b:if cond='data:title != &quot;&quot;'>
 <div class='widget-header'>
 <div class='widget-title'><data:title/></div>
 </div>
 </b:if>
-<div class='widget-content'>
+<div class='advert-inner'>
 <data:content/>
 </div>
 </div>
@@ -1555,7 +1619,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class='footer-top'>
 
 <div class='footer-col footer-about'>
-<b:section id='footer-about' maxwidgets='1' showaddelement='yes'>
+<b:section id='footer-about' maxwidgets='3' showaddelement='yes'>
   <b:widget id='Text1' locked='false' title='Tentang Kami' type='Text' version='1'>
     <b:widget-settings>
       <b:widget-setting name='content'>Kami adalah kami</b:widget-setting>
@@ -1567,20 +1631,20 @@ document.addEventListener('DOMContentLoaded', function() {
   </b:widget>
 </b:section>
 <div class='footer-social'>
-<b:section id='footer-social' maxwidgets='1' showaddelement='yes'>
+<b:section id='footer-social' maxwidgets='3' showaddelement='yes'>
   <b:widget id='LinkList3' locked='false' title='Social Media' type='LinkList' version='1'>
     <b:widget-settings>
       <b:widget-setting name='sorting'>NONE</b:widget-setting>
       <b:widget-setting name='text-1'>Instagram</b:widget-setting>
-      <b:widget-setting name='link-1'>#</b:widget-setting>
+      <b:widget-setting name='link-1'>https://www.instagram.com/justinfo.indonesia?igsh=MWY3d3dteDIwdmxpaA==</b:widget-setting>
       <b:widget-setting name='text-0'>Facebook</b:widget-setting>
-      <b:widget-setting name='link-0'>#</b:widget-setting>
+      <b:widget-setting name='link-0'>https://www.facebook.com/share/1H9Mv8HjKh/</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
 <b:loop values='data:links' var='link'>
 <a expr:href='data:link.target' expr:title='data:link.name' rel='noopener noreferrer' target='_blank'>
 <b:if cond='data:link.name contains &quot;Facebook&quot;'><i class='fab fa-facebook-f'/></b:if>
-<b:if cond='data:link.name contains &quot;Twitter&quot;'><i class='fab fa-twitter'/></b:if>
+<b:if cond='data:link.name contains &quot;Twitter&quot; or data:link.name contains &quot;X&quot;'><i class='fab fa-x-twitter'/></b:if>
 <b:if cond='data:link.name contains &quot;Instagram&quot;'><i class='fab fa-instagram'/></b:if>
 <b:if cond='data:link.name contains &quot;YouTube&quot;'><i class='fab fa-youtube'/></b:if>
 <b:if cond='data:link.name contains &quot;TikTok&quot;'><i class='fab fa-tiktok'/></b:if>
@@ -1601,7 +1665,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <b:widget-settings>
       <b:widget-setting name='sorting'>FREQUENCY</b:widget-setting>
       <b:widget-setting name='display'>LIST</b:widget-setting>
-      <b:widget-setting name='selectedLabelsList'>DAERAH,EDUKASI,GAYA HIDUP,OLAHRAGA</b:widget-setting>
+      <b:widget-setting name='selectedLabelsList'>DAERAH,GAYA HIDUP,NASIONAL,OLAHRAGA</b:widget-setting>
       <b:widget-setting name='showType'>USER_SELECTED</b:widget-setting>
       <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
     </b:widget-settings>
@@ -1646,15 +1710,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <b:section id='footer-contact' maxwidgets='1' showaddelement='yes'>
   <b:widget id='LinkList4' locked='false' title='Kontak' type='LinkList' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='link-3'>https://</b:widget-setting>
       <b:widget-setting name='sorting'>NONE</b:widget-setting>
       <b:widget-setting name='text-1'>Email : iklan@justinfo.id</b:widget-setting>
       <b:widget-setting name='link-1'>https://</b:widget-setting>
-      <b:widget-setting name='text-0'>WhatsApp : 0852000</b:widget-setting>
-      <b:widget-setting name='link-2'>https://</b:widget-setting>
-      <b:widget-setting name='text-3'>Telepon : 0482</b:widget-setting>
-      <b:widget-setting name='link-0'>https://</b:widget-setting>
-      <b:widget-setting name='text-2'>Alamat : Sinjai</b:widget-setting>
+      <b:widget-setting name='text-0'>WhatsApp : 085753653138</b:widget-setting>
+      <b:widget-setting name='link-2'>https://share.google/U6GzoS12tgy7TZNz6</b:widget-setting>
+      <b:widget-setting name='link-0'>https://wa.me/6285753653138</b:widget-setting>
+      <b:widget-setting name='text-2'>Alamat : GKM Grand Tower, Jln. TB Simatupang, NO. Kav. 89G, RT.10/RW.2, Kebagusan, Pasar Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
 <h4><data:title/></h4>
@@ -1686,46 +1748,5 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </footer>
 
-<script type='text/javascript'>
-//<![CDATA[
-/* JInfo Theme Core Engine */
-(function(_0x1a2b){const _0x3c4d=window;const _0x5e6f=document;const _0x7a8b=atob;
-// Penyamaran URL API atau Proxy (Gunakan Base64)
-// Contoh ini masih langsung ke Telegram, tapi disamarkan. 
-// Sangat disarankan ganti ke URL Proxy buatan sendiri.
-const _0x0912 = _0x7a8b('aHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdA=='); // https://api.telegram.org/bot
-const _0x1122 = 'YOUR_BOT_TOKEN'; // Tetap harus diganti, tapi nanti kita bungkus API
-const _0x3344 = 'YOUR_CHAT_ID';
-
-function _0xVerify(){
-  const _0xL = _0x5e6f.getElementById('jinfo-license');
-  const _0xH = _0x3c4d.location.hostname;
-  if(!_0xL) { _0x3c4d.location.href='https://justinfo.id/unauthorized'; return; }
-  
-  // Logic pengiriman data (disamarkan)
-  if(!sessionStorage.getItem('_j_v')){
-    const _0xData = {chat_id:_0x3344, text:'Installed: '+_0xH+' | ID: '+_0xL.innerText};
-    fetch(_0x0912+_0x1122+'/sendMessage',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(_0xData)
-    }).then(()=>{sessionStorage.setItem('_j_v','1')});
-  }
-  
-  // Trigger tampilan: Menambahkan class yang membuka CSS tersembunyi
-  _0x5e6f.body.classList.add('is-authorized');
-}
-
-// Jalankan verifikasi saat DOM siap
-_0x3c4d.addEventListener('DOMContentLoaded', _0xVerify);
-
-// Anti-Delete: Cek berkala apakah fungsi verifikasi masih ada
-setInterval(function(){
-  if(!_0x5e6f.body.classList.contains('is-authorized')){
-    _0x5e6f.body.innerHTML = 'Unauthorized Template. Please contact justinfo.id';
-  }
-}, 8000);
-})(window);
-//]]>
-</script>
 </body>
 </html>

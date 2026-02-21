@@ -1,18 +1,19 @@
-# JustInfo News Portal - Blogger Template
+# JustInfo News Portal - Blogger Template (Update 210226)
 
-Template Blogger modern untuk portal berita dengan desain responsif dan mudah dikonfigurasi.
+Template Blogger modern untuk portal berita dengan desain responsif, fitur lengkap, dan dioptimalkan untuk kenyamanan membaca di perangkat mobile.
 
 ## 📋 Fitur Utama
 
+- ✅ **Mobile-First Reading Experience** (Layout tumpuk yang nyaman di HP)
 - ✅ Breaking News Ticker (Berita Terkini Berjalan)
 - ✅ Hero Slider (Slideshow Berita Utama)
 - ✅ Iklan Global Responsif (Muncul di semua halaman)
 - ✅ Featured Grid (Grid Berita Pilihan)
 - ✅ Kategori dengan Layout Mixed (3 Grid + 2 List)
 - ✅ Sidebar dengan Popular Posts & Archive
-- ✅ Footer yang bisa diedit dari Tata Letak
-- ✅ Desain Responsif (Mobile Friendly)
-- ✅ SEO Friendly
+- ✅ Footer Dinamis (Logo, Social Media, Menu, Kontak)
+- ✅ **Support Logo Footer** (Upload via Tata Letak)
+- ✅ SEO Friendly & Fast Loading
 
 ---
 
@@ -21,25 +22,39 @@ Template Blogger modern untuk portal berita dengan desain responsif dan mudah di
 1. Masuk ke **Blogger Dashboard**
 2. Pilih blog Anda
 3. Pergi ke **Tema** → **Sesuaikan** → **Edit HTML**
-4. Hapus semua kode yang ada
-5. Salin seluruh isi file `template_200226.xml`
+4. Hapus semua kode yang ada di editor
+5. Salin seluruh isi file `template_210226.xml`
 6. Tempel di editor HTML Blogger
-7. Klik **Simpan**
+7. Klik **Simpan** (Ikon Disket di pojok kanan atas)
 
 ---
 
-## ⚙️ Konfigurasi
+## ⚙️ Konfigurasi Tata Letak (Layout)
 
-### 1. Header & Logo
+### 1. Logo Header
 
 **Lokasi:** Tata Letak → Header
 
-- Klik widget **Header** untuk mengubah judul dan deskripsi blog
-- Untuk logo gambar, upload melalui pengaturan header
+- Klik widget **Header**
+- Pilih **Upload gambar dari komputer**
+- Atur penempatan (biasanya "Di belakang judul dan keterangan")
+- Klik Simpan
+
+### 2. Logo Footer (Fitur Baru)
+
+**Lokasi:** Tata Letak → Footer (Kolom Pertama)
+
+1. Cari section **footer-social** (di bawah widget "Tentang Kami")
+2. Klik **Tambahkan Gadget**
+3. Pilih **Gambar** (Image)
+4. Judul: "Footer Logo" (opsional)
+5. Upload gambar logo Anda
+6. Klik **Simpan**
+7. Seret/geser widget tersebut ke posisi di bawah widget Social Media jika perlu
 
 ---
 
-### 2. Iklan Global Atas (Responsive)
+### 3. Iklan Global Atas (Responsive)
 
 **Lokasi:** Tata Letak → ad-before-slider (HTML99)
 
@@ -56,7 +71,7 @@ Iklan ini bersifat global dan muncul di posisi paling atas konten pada semua hal
 
 ---
 
-### 3. Breaking News Ticker
+### 4. Breaking News Ticker
 
 Breaking News Ticker otomatis menampilkan postingan terbaru dari blog.
 
@@ -87,14 +102,11 @@ loadTicker('breaking-ticker', '', 10);
 
 // Menampilkan 5 post dari label BREAKING saja
 loadTicker('breaking-ticker', 'BREAKING', 5);
-
-// Menampilkan 8 post dari label HEADLINE
-loadTicker('breaking-ticker', 'HEADLINE', 8);
 ```
 
 ---
 
-### 3. Hero Slider (Headline)
+### 5. Hero Slider (Headline)
 
 Hero Slider otomatis menampilkan postingan terbaru dengan gambar besar.
 
@@ -117,47 +129,7 @@ loadSlider('main-slider', '', 5);
 
 // Menampilkan 4 post dari label HEADLINE saja
 loadSlider('main-slider', 'HEADLINE', 4);
-
-// Menampilkan 6 post dari label UTAMA
-loadSlider('main-slider', 'UTAMA', 6);
 ```
-
----
-
-### 4. Iklan Atas Header (AdSense)
-
-**Lokasi:** Tata Letak → ad-top (HTML99)
-
-1. Klik **Edit** pada widget "Iklan Atas"
-2. Tempel kode iklan AdSense atau banner Anda
-3. Simpan
-
-Contoh kode AdSense:
-```html
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-XXXXXXXX"
-     data-ad-slot="XXXXXXXX"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-```
-
----
-
-### 5. Menu Navigasi
-
-**Lokasi:** Tata Letak → Navigation (LinkList1)
-
-Tambahkan link menu dengan format:
-
-| Nama | URL |
-|------|-----|
-| Beranda | / |
-| Daerah | /search/label/DAERAH |
-| Olahraga | /search/label/OLAHRAGA |
-| Edukasi | /search/label/EDUKASI |
-| Gaya Hidup | /search/label/GAYA%20HIDUP |
 
 ---
 
@@ -171,10 +143,10 @@ Section ini mendukung 2 jenis widget:
 1. Klik **Tambah Gadget** di section "homepage-content"
 2. Pilih **HTML/JavaScript**
 3. Isi:
-   - **Judul**: Nama kategori yang tampil (contoh: "DAERAH")
+   - **Judul**: Nama kategori yang tampil (contoh: "POLITIK")
    - **Konten**: Nama label persis (teks saja, tanpa HTML)
    
-   Contoh: `DAERAH` atau `OLAHRAGA`
+   Contoh: `POLITIK` atau `OLAHRAGA`
 4. Simpan
 
 #### ➕ Menambah Widget IKLAN:
@@ -195,19 +167,19 @@ Section ini mendukung 2 jenis widget:
 - Jika **konten mengandung tag HTML** (`<`) → ditampilkan sebagai **IKLAN**
 - Jika **konten hanya teks biasa** → ditampilkan sebagai **KATEGORI**
 
-#### ⚠️ Penting:
-- Nama label di konten HARUS sama persis dengan label di blog (huruf besar/kecil)
-- Anda bisa mengatur urutan widget dengan drag & drop di Tata Letak
-
 ---
 
-### 7. Footer - Tentang Kami
+### 7. Menu Navigasi
 
-**Lokasi:** Tata Letak → footer-about (Text1)
+**Lokasi:** Tata Letak → Navigation (LinkList1)
 
-1. Klik **Edit** pada widget Text
-2. Isi **Judul**: Tentang Kami
-3. Isi **Konten**: Deskripsi website Anda
+Tambahkan link menu dengan format:
+
+| Nama | URL |
+|------|-----|
+| Beranda | / |
+| Daerah | `/search/label/DAERAH` |
+| Olahraga | `/search/label/OLAHRAGA` |
 
 ---
 
@@ -220,263 +192,60 @@ Tambahkan link social media dengan format nama yang mengandung kata kunci:
 | Nama | URL | Ikon |
 |------|-----|------|
 | Facebook | https://facebook.com/username | 🔵 Facebook |
-| Twitter | https://twitter.com/username | 🐦 Twitter |
+| Twitter / X | https://twitter.com/username | ✖️ X (Twitter) |
 | Instagram | https://instagram.com/username | 📷 Instagram |
 | YouTube | https://youtube.com/channel/xxx | ▶️ YouTube |
 | TikTok | https://tiktok.com/@username | 🎵 TikTok |
 | WhatsApp | https://wa.me/62xxx | 💬 WhatsApp |
 | Telegram | https://t.me/username | ✈️ Telegram |
 
-**Penting:** Nama link HARUS mengandung kata kunci (Facebook, Twitter, dll) agar ikon muncul.
-
 ---
 
-### 9. Footer - Kontak
+## 🔤 Kustomisasi Font & Warna
 
-**Lokasi:** Tata Letak → footer-contact (LinkList4)
+Template ini mendukung pengaturan font dan warna yang mudah melalui CSS Variables.
 
-Tambahkan informasi kontak dengan format:
-
-| Nama | URL |
-|------|-----|
-| Email: info@domain.com | mailto:info@domain.com |
-| Telepon: +62 123 456 789 | tel:+62123456789 |
-| WhatsApp: +62 852 xxxx | https://wa.me/62852xxxx |
-| Alamat: Jakarta, Indonesia | # |
-
-**Kata kunci untuk ikon:**
-- `Email` → Ikon amplop
-- `Phone` atau `Telepon` → Ikon telepon
-- `WhatsApp` → Ikon WhatsApp
-- `Address` atau `Alamat` → Ikon lokasi
-
----
-
-### 10. Footer - Menu
-
-**Lokasi:** Tata Letak → footer-menu (LinkList2)
-
-Tambahkan link halaman statis:
-
-| Nama | URL |
-|------|-----|
-| Tentang Kami | /p/tentang-kami.html |
-| Kebijakan Privasi | /p/kebijakan-privasi.html |
-| Kontak | /p/kontak.html |
-| Disclaimer | /p/disclaimer.html |
-
----
-
-### 11. Footer - Kategori/Label
-
-**Lokasi:** Tata Letak → footer-labels (Label3)
-
-Widget ini otomatis menampilkan label/kategori dari blog Anda.
-Tidak perlu konfigurasi manual.
-
----
-
-### 12. Sidebar Homepage
-
-**Lokasi:** Tata Letak → sidebar-home
-
-Sidebar ini **hanya muncul di halaman utama, arsip, dan pencarian**.
-
-**Widget default:**
-- PopularPosts1 - Berita Populer
-- HTML10 - Trending Posts
-- Label1 - Kategori (List)
-- BlogArchive1 - Arsip
-
-Anda bisa menambah/hapus widget sesuai kebutuhan.
-
----
-
-### 13. Sidebar Single Post
-
-**Lokasi:** Tata Letak → sidebar-post
-
-Sidebar ini **hanya muncul di halaman artikel (single post) dan static page**.
-
-**Widget default:**
-- PopularPosts2 - Artikel Populer
-- HTML11 - Sedang Trending
-- Label2 - Tags (Cloud)
-- HTML12 - Slot Iklan Sidebar
-
-Anda bisa menambah/hapus widget sesuai kebutuhan. Cocok untuk memasang iklan kontekstual yang hanya muncul di halaman artikel.
-
----
-
-### 14. Sidebar Global (Muncul di Semua Halaman)
-
-**Lokasi:** Tata Letak → sidebar-global
-
-Sidebar ini **muncul di SEMUA halaman** (homepage, single post, static page, arsip, dll).
-
-**Widget default:**
-- HTML13 - Slot Iklan Global
-
-Cocok untuk:
-- Iklan yang ingin ditampilkan di semua halaman
-- Widget subscribe/newsletter
-- Banner promosi
-
----
-
-### 15. Related Posts (Berita Terkait)
-
-Di halaman single post, secara otomatis menampilkan **5 artikel terkait** berdasarkan label pertama dari post tersebut.
-
-Artikel ditampilkan dalam layout **grid 5 kolom** (responsive: 2 kolom di tablet, 1 kolom di mobile).
-
----
-
-### 16. Komentar Facebook
-
-Template ini menggunakan **Facebook Comments** sebagai sistem komentar.
-
-**Keuntungan:**
-- Pengguna bisa komentar menggunakan akun Facebook
-- Mengurangi spam
-- Integrasi sosial lebih baik
-
-**Catatan:** Komentar akan muncul otomatis di halaman artikel.
-
----
-
-## 🔤 Kustomisasi Font
-
-Template ini mendukung pengaturan font yang mudah melalui CSS Variables.
-
-### Cara Mengubah Font:
-
-1. Buka template dan cari bagian `/* KONFIGURASI FONT */`
-2. Ubah nilai `--font-primary` sesuai keinginan
-
-### Contoh Konfigurasi Font:
-
-```css
-:root{
-  /* Font Default (Segoe UI) */
-  --font-primary:'Segoe UI', system-ui, -apple-system, sans-serif;
-  
-  /* Atau gunakan font lain: */
-  
-  /* Myriad Pro / Source Sans Pro (mirip Myriad Pro) */
-  --font-primary:'Source Sans Pro', 'Myriad Pro', sans-serif;
-  
-  /* Roboto */
-  --font-primary:'Roboto', sans-serif;
-  
-  /* Open Sans */
-  --font-primary:'Open Sans', sans-serif;
-  
-  /* Poppins */
-  --font-primary:'Poppins', sans-serif;
-  
-  /* Inter */
-  --font-primary:'Inter', sans-serif;
-}
-```
-
-### Menggunakan Google Fonts:
-
-1. Uncomment (hapus `/*` dan `*/`) baris import font yang diinginkan di bagian atas CSS
-2. Ubah `--font-primary` ke nama font tersebut
-
-**Contoh untuk Source Sans Pro (mirip Myriad Pro):**
-```css
-/* Hapus comment ini: */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
-
-:root{
-  --font-primary:'Source Sans Pro', sans-serif;
-}
-```
-
-### Variabel Font Lainnya:
-
-| Variable | Fungsi | Default |
-|----------|--------|---------|
-| `--font-primary` | Font utama seluruh website | Segoe UI |
-| `--font-heading` | Font untuk heading/judul | Sama dengan primary |
-| `--font-size-base` | Ukuran font dasar | 14px |
-| `--font-size-small` | Ukuran font kecil | 12px |
-| `--font-size-large` | Ukuran font besar | 16px |
-| `--line-height` | Jarak antar baris | 1.6 |
-
----
-
-## 🎨 Kustomisasi Warna
-
-Untuk mengubah warna tema, edit bagian CSS Variables di template:
-
+### Mengubah Warna:
+Cari bagian `:root` di dalam template (CSS):
 ```css
 :root{
   --accent:#0d47a1;      /* Warna biru utama */
   --accent2:#e63946;     /* Warna merah aksen */
-  --primary:#1a237e;     /* Warna biru gelap */
+  --primary:#1a237e;     /* Warna biru gelap header */
   --bg:#f5f5f5;          /* Warna background */
-  --card:#fff;           /* Warna card */
-  --text:#333;           /* Warna teks */
-  --muted:#777;          /* Warna teks secondary */
+}
+```
+
+### Mengubah Font:
+Cari bagian `/* KONFIGURASI FONT */` atau edit variable di `:root`:
+```css
+:root{
+  /* Font Default */
+  --font-primary:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 ```
 
 ---
 
-## 📝 Membuat Postingan
+## 📱 Tampilan Mobile
 
-### Tips untuk tampilan optimal:
-
-1. **Gunakan Label** - Setiap post harus memiliki minimal 1 label
-2. **Gambar Utama** - Upload gambar di awal post untuk thumbnail
-3. **Judul Menarik** - Maksimal 60-70 karakter
-4. **Meta Description** - Isi deskripsi pencarian di pengaturan post
-
----
-
-## ❓ FAQ
-
-**Q: Kenapa kategori tidak muncul?**
-A: Pastikan konten widget (bukan judul) sama persis dengan nama label di blog, termasuk huruf besar/kecil.
-
-**Q: Kenapa muncul pesan "Silakan isi nama label di konten widget"?**
-A: Widget kategori membutuhkan nama label di bagian konten. Edit widget dan isi konten dengan nama label yang tepat.
-
-**Q: Kenapa ikon social media tidak muncul?**
-A: Pastikan nama link mengandung kata kunci yang tepat (Facebook, Twitter, dll).
-
-**Q: Bagaimana cara menambah kategori baru?**
-A: 
-1. Buka **Tata Letak**
-2. Cari section **homepage-content**
-3. Klik **Tambah Gadget** → pilih **HTML/JavaScript**
-4. Isi Judul dengan nama kategori (contoh: "POLITIK")
-5. Isi Konten dengan nama label persis (contoh: "POLITIK")
-6. Simpan
-
-**Q: Bagaimana cara memasang iklan AdSense?**
-A: 
-1. Buka **Tata Letak**
-2. Klik **Edit** pada widget "Iklan Atas" (ad-top)
-3. Tempel kode AdSense Anda
-4. Simpan
+Template ini sudah dioptimalkan untuk kenyamanan membaca di ponsel:
+- **Layout Tumpuk (Stacked)**: Berita ditampilkan 1 kolom penuh dengan gambar besar di atas dan judul di bawah, mirip aplikasi berita modern.
+- **Font Terbaca**: Ukuran font disesuaikan (17-18px) agar nyaman di mata tanpa perlu zoom.
+- **Navigasi Swipe**: Menu atas bisa digeser kanan-kiri.
+- **Sidebar Tersembunyi**: Sidebar (kecuali widget penting) disembunyikan di mobile agar fokus ke konten.
 
 ---
 
-## 📄 Lisensi
+## 🆘 Troubleshooting
 
-Template ini gratis digunakan untuk keperluan pribadi maupun komersial.
-Kredit tidak wajib namun sangat dihargai.
+**Q: Saya tidak bisa memulihkan tema (Error "Could not restore theme")?**
+A: Gunakan file `template_210226.xml` yang sudah diperbaiki strukturnya. Jika masih gagal, hapus widget yang mungkin menyebabkan konflik (seperti logo footer) dari kode XML, lalu tambahkan secara manual lewat Tata Letak.
+
+**Q: Logo footer tidak muncul?**
+A: Pastikan Anda sudah menambahkan widget **Gambar** secara manual di Tata Letak bagian Footer (footer-social) setelah menginstall tema.
+
+**Q: Komentar Facebook tidak muncul?**
+A: Pastikan blog Anda sudah online dan tidak diblokir oleh adblocker browser.
 
 ---
-
-## 🆘 Dukungan
-
-Jika ada pertanyaan atau masalah, silakan hubungi pengembang.
-
----
-
-**Dibuat dengan ❤️ untuk Blogger Indonesia**
